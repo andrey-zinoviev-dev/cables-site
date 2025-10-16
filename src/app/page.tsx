@@ -1,22 +1,26 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import heroImage from "../assets/Rectangle-1.png";
-import whoWeAreImage from "../assets/2025-10-08-19.38.51-1.png";
+import whoWeAreImage from "../assets/2025-10-08-19.38.51.jpg";
 import { advantages, categories } from "@/utils/utils";
 import Container from "./components/Container";
 
 export default function Home() {
   return (
     <div className={styles.page}>
-      <header>
-        <span>logo</span>
-        <button></button>
+      <header className={styles.header}>
+        <Container>
+          <div className={styles.headerContent}>
+            <span>logo</span>
+            <button className={styles.heroButton}>Получить консультацию</button>
+          </div>
+        </Container>
       </header>
       <main className={styles.main}>
         <section>
           <Container>
             <div className={styles.heroContent}>
-              <h1 className={styles.heroTitle}>
+              <h1 className={`${styles.heroTitle} ${styles.manropeTitle}`}>
                 Комплексное решение поставок кабеля для любых задач и объемов
               </h1>
               <p className={styles.heroDescription}>
@@ -40,18 +44,29 @@ export default function Home() {
         <section>
           <Container>
             <div className={styles.whoWeAreContent}>
-              <h2 className={styles.whoWeAreTitle}>Кто мы</h2>
-              <p className={styles.whoWeAreDescription}>
-                «Электрокабель» — официальный дилер Подольсккабель. Работаем
-                напрямую с заводом-изготовителем, поэтому вы получаете продукцию
-                по выгодной цене, без задержек и с гарантией качества по ГОСТ.
-                Эти принципы определяют наши ключевые преимущества.
-              </p>
+              <div className={styles.whoWeAreDescriptionContent}>
+                <h2
+                  className={`${styles.whoWeAreTitle} ${styles.manropeTitle}`}
+                >
+                  Кто мы
+                </h2>
+                <p className={styles.whoWeAreDescription}>
+                  «Электрокабель» — официальный дилер Подольсккабель. Работаем
+                  напрямую с заводом-изготовителем, поэтому вы получаете
+                  продукцию по выгодной цене, без задержек и с гарантией
+                  качества по ГОСТ. Эти принципы определяют наши ключевые
+                  преимущества.
+                </p>
+              </div>
               <ul className={styles.advantagesList}>
                 {advantages.map((advantage, index) => (
                   <li key={advantage.title} className={styles.advantageItem}>
                     <span>{(index + 1).toString().padStart(2, "0")}.</span>
-                    <h3 className={styles.advantageTitle}>{advantage.title}</h3>
+                    <h3
+                      className={`${styles.advantageTitle} ${styles.manropeTitle}`}
+                    >
+                      {advantage.title}
+                    </h3>
                     <p className={styles.advantageDescription}>
                       {advantage.description}
                     </p>
@@ -63,17 +78,27 @@ export default function Home() {
         </section>
         <section>
           <Container>
-            <div>
-              <h2 className={styles.whoWeAreTitle}>
+            <div className={styles.categoriesContent}>
+              <h2 className={`${styles.whoWeAreTitle} ${styles.manropeTitle}`}>
                 Категории кабельной продукции
               </h2>
-              <ul>
+              <ul className={styles.categoriesList}>
                 {categories.map((category) => {
                   return (
-                    <li key={category.title}>
-                      <Image src={category.cover} alt={category.title} width={100} height={100} />
+                    <li key={category.title} className={styles.categoryItem}>
+                      <Image
+                        className={styles.categoryCover}
+                        src={category.cover}
+                        alt={category.title}
+                        width={100}
+                        height={100}
+                      />
                       {/* <Image src={category.cover} alt={category.title} width={100} height={100} /> */}
-                      <p>{category.title}</p>
+                      <p
+                        className={`${styles.categoryTitle} ${styles.manropeTitle}`}
+                      >
+                        {category.title}
+                      </p>
                     </li>
                   );
                 })}
@@ -82,16 +107,71 @@ export default function Home() {
           </Container>
         </section>
         <section>
-          <div>
-            <h2>Связаться с нами</h2>
-            <form>
-              <input></input>
-              <input></input>
-              <input></input>
-              <input></input>
-              <button type="submit">Отправить сообщение</button>
-            </form>
-          </div>
+          <Container>
+            <div className={styles.contactUsContent}>
+              <div className={styles.contactUsDescriptionContent}>
+                <h2
+                  className={`${styles.whoWeAreTitle} ${styles.manropeTitle}`}
+                >
+                  Связаться с нами
+                </h2>
+                <div className={styles.contactUsDescriptionContainer}>
+                  <p className={styles.contactUsDescription}>
+                    По всем интересующим Вас вопросам, пожалуйста, заполните
+                    форму снизу.
+                  </p>
+                  <p className={styles.contactUsDescription}>
+                    Мы с радостью Вас проконсультируем.
+                  </p>
+                </div>
+                <form className={styles.contactForm}>
+                  <input
+                    className={styles.contactFormInput}
+                    placeholder="Имя"
+                  ></input>
+                  <input
+                    className={styles.contactFormInput}
+                    placeholder="Телефон"
+                  ></input>
+                  <input
+                    className={styles.contactFormInput}
+                    placeholder="Почта"
+                  ></input>
+                  <textarea
+                    className={styles.contactFormTextarea}
+                    placeholder="Сообщение"
+                  ></textarea>
+                  <button className={styles.contactFormButton} type="submit">
+                    Отправить сообщение
+                  </button>
+                </form>
+              </div>
+              <div className={styles.contactUsImageContainer}>
+                <ul className={styles.contactUsList}>
+                  <li className={styles.contactUsItem}>
+                    <h3 className={`${styles.manropeTitle} ${styles.contactUsItemTitle}`}>Обычные обращения</h3>
+                    <div className={styles.contactUsItemDescription}>
+                      <span>+7 (495) 123-45-67</span>
+                      <span>info@example.com</span>
+                    </div>
+                  </li>
+                  <li className={styles.contactUsItem}>
+                    <h3 className={`${styles.manropeTitle} ${styles.contactUsItemTitle}`}>Срочные обращения</h3>
+                    <div className={styles.contactUsItemDescription}>
+                      <span>+7 (495) 123-45-67</span>
+                      <span>info@example.com</span>
+                    </div>
+                  </li>
+                </ul>
+                <Image
+                  className={styles.contactUsImage}
+                  src={whoWeAreImage}
+                  alt="Contact us image"
+                  width={1000}
+                />
+              </div>
+            </div>
+          </Container>
         </section>
         {/* <Image
           className={styles.logo}
@@ -135,11 +215,16 @@ export default function Home() {
         </div> */}
       </main>
       <footer className={styles.footer}>
-        <span>© 2025 Электро - Кабель </span>
-        <div>
-          <span>ИНН: 123456789012</span>
-          <span>ОГРН: 123456789012345</span>
-        </div>
+        <Container>
+          <div className={styles.footerContent}>
+            <span>© 2025 Электро - Кабель </span>
+            <div>
+              <span>ИНН: 123456789012</span>
+              <span>ОГРН: 123456789012345</span>
+            </div>
+          </div>
+        </Container>
+
         {/* <a
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           target="_blank"

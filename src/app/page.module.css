@@ -13,9 +13,11 @@
   min-height: 100svh;
   /* padding: 80px;
   gap: 64px; */
-  font-family: var(--font-geist-sans);
+  /* font-family: var(--font-geist-sans); */
+  font-family: var(--font-bitter);
   background-color: #ffffff;
   color: black;
+  /* position: relative; */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,10 +36,13 @@
   flex-direction: column;
   gap: 32px;
   grid-row-start: 2;
+  padding: 0 0 48px 0;
 }
 
 .main ol {
-  font-family: var(--font-geist-mono);
+  /* font-family: var(--font-geist-mono); */
+  /* font-family: var(--font-manrope); */
+  font-family: var(--font-bitter);
   padding-left: 0;
   margin: 0;
   font-size: 14px;
@@ -101,6 +106,26 @@ a.secondary {
   min-width: 158px;
 }
 
+.header {
+  padding: 12px 0;
+  /* position: -webkit-sticky; */
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.manropeTitle {
+  font-family: var(--font-manrope);
+  font-weight: 500;
+}
+
 .heroContent {
   max-width: 720px;
     display: flex;
@@ -127,6 +152,7 @@ a.secondary {
     border-radius: 5px;
   border: 1px solid transparent;
   cursor: pointer;
+  color: white;
 }
 
 .heroButton:hover {
@@ -137,9 +163,12 @@ a.secondary {
 }
 
 .whoWeAreContent {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 12px; */
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 48px;
 }
 
 .whoWeAreTitle {
@@ -153,6 +182,12 @@ a.secondary {
   max-width: 720px;
 }
 
+.whoWeAreDescriptionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .whoWeAreImage {
   width: 100%;
   height: fit-content;
@@ -160,7 +195,7 @@ a.secondary {
 
 .advantagesList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
   /* grid-template-columns: repeat(2, 1fr); */
   list-style: none;
   gap: 12px;
@@ -186,13 +221,154 @@ a.secondary {
   line-height: 1.5;
 }
 
-.footer {
-  grid-row-start: 3;
+.categoriesContent {
   display: flex;
+  flex-direction: column;
   gap: 24px;
 }
 
-.footer a {
+.categoriesList {
+  display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    list-style: none;
+    gap: 12px;
+}
+
+.categoryItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryCover {
+      color: transparent;
+        aspect-ratio: 1 / 1;
+        width: 100%;
+        height: fit-content;
+        /* height: 100%; */
+        object-fit: contain;
+}
+
+.categoryTitle {
+  /* font-size: 14px; */
+  line-height: 1.5;
+  /* min-height: 61px; */
+}
+
+.contactUsContent {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 48px;
+}
+
+.contactUsDescriptionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contactUsDescriptionContainer {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  gap: 4px;
+}
+
+.contactUsDescription {
+  line-height: 1.5;
+  max-width: 420px;
+}
+
+.contactForm {
+  width: 100%;
+  /* max-width: 320px; */
+  display: grid;
+  gap: 12px;
+}
+
+.contactFormInput, .contactFormTextarea {
+  padding: 10px 10px;
+  border-radius: 0;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+
+.contactFormTextarea {
+  resize: none;
+  color: black;
+  field-sizing: content;
+  min-height: 60px;
+}
+
+.contactFormInput:focus,
+.contactFormTextarea:focus {
+  border-color: rgba(0, 0, 0, 1);
+}
+
+.contactFormButton {
+  width: fit-content;
+  align-self: flex-start;
+  padding: 10px 10px;
+      background-color: black;
+        border: none;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid transparent;
+        cursor: pointer;
+  color: white;
+}
+
+.contactUsImageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contactUsList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  list-style: none;
+  gap: 12px;
+}
+
+.contactUsItem {
+  display: flex;
+  flex-direction: column; 
+  gap: 4px;
+}
+
+.contactUsItemDescription {
+  display: grid;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.contactUsImage {
+  width: 100%;
+  height: fit-content;
+  object-fit: cover;
+  aspect-ratio: 2.4/1;
+  border-radius: 3px;
+}
+
+.footer {
+  /* grid-row-start: 3;
+  display: flex;
+  gap: 24px; */
+  background-color: black;
+  color: white;
+  padding: 24px 0;
+  /* display: flex; */
+}
+
+.footerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* .footer a {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -200,7 +376,7 @@ a.secondary {
 
 .footer img {
   flex-shrink: 0;
-}
+} */
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
@@ -220,10 +396,32 @@ a.secondary {
   }
 }
 
+@media screen and (max-width: 1279px) {
+  .whoWeAreContent {
+    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+
+  .advantagesList {
+    gap: 24px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .contactUsContent {
+    grid-template-columns: 320px 1fr;
+    gap: 24px;
+  }
+
+  .contactUsImage {
+    aspect-ratio: 16/9;
+  }
+}
+
 @media (max-width: 600px) {
   .page {
-    padding: 32px;
-    padding-bottom: 80px;
+    /* padding: 32px; */
+    /* padding-bottom: 80px; */
   }
 
   .main {
@@ -252,6 +450,57 @@ a.secondary {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .heroContent {
+    padding: 24px 0;
+  }
+
+  .heroTitle {
+    font-size: 32px;
+    line-height: 1.1;
+  }
+
+  .heroDescription {
+    font-size: 14px;
+  }
+
+  .whoWeAreTitle {
+    font-size: 24px;
+    line-height: 1.1;
+  }
+
+  .whoWeAreDescription {
+    font-size: 14px;
+  }
+
+  .contactUsContent {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .contactUsDescription {
+    font-size: 14px;
+  }
+
+  .contactUsList {
+    grid-template-columns: 1fr;
+  }
+
+  .contactUsItemTitle {
+    font-size: 16px;
+  }
+
+  .contactUsImage {
+    aspect-ratio: 16/9;
+  }
+
+  .footerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 }
 
