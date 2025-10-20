@@ -1,18 +1,41 @@
+"use client";
 import Image from "next/image";
 import styles from "./page.module.css";
 import heroImage from "../assets/Rectangle-1.png";
 import whoWeAreImage from "../assets/2025-10-08-19.38.51.jpg";
 import { advantages, categories } from "@/utils/utils";
-import Container from "./components/Container";
+import Container from "./components/Container/Container";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useRef } from "react";
+import CTA from "./components/CTA/CTA";
 
 export default function Home() {
+  const contactInputRef = useRef<HTMLInputElement | null>(null);
+
+  //functions
+  function handleCTAClick() {
+    contactInputRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest",
+    });
+
+    setTimeout(() => {
+      contactInputRef.current?.focus();
+    }, 1000);
+  }
+
   return (
     <div className={styles.page}>
       <header className={styles.header}>
         <Container>
           <div className={styles.headerContent}>
             <span>logo</span>
-            <button className={styles.heroButton}>Получить консультацию</button>
+            <CTA
+              onClick={handleCTAClick}
+            />
+            {/* <a className={styles.heroButton}>Получить консультацию</a> */}
           </div>
         </Container>
       </header>
@@ -28,9 +51,26 @@ export default function Home() {
                 сопровождение поставок — от консультации до доставки с
                 соблюдением сроков и стандартов качества по всей России
               </p>
-              <button className={styles.heroButton}>
+              <CTA
+                onClick={handleCTAClick}
+              />
+              {/* <a className={styles.heroButton} href="#contact-us">Получить консультацию</a> */}
+              {/* <button
+                className={styles.heroButton}
+                onClick={() => {
+                  contactInputRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                    inline: "nearest",
+                  });
+
+                    setTimeout(() => {
+                      contactInputRef.current?.focus();
+                    }, 1000);
+                }}
+              >
                 Получить консультацию
-              </button>
+              </button> */}
             </div>
           </Container>
           <Image
@@ -60,8 +100,13 @@ export default function Home() {
               </div>
               <ul className={styles.advantagesList}>
                 {advantages.map((advantage, index) => (
-                  <li key={advantage.title} className={styles.advantageItem}>
-                    <span>{(index + 1).toString().padStart(2, "0")}.</span>
+                  <li
+                    key={advantage.title}
+                    className={`${styles.advantageItem} ${styles.manropeTitle}`}
+                  >
+                    <span className={styles.advantageIndex}>
+                      {(index + 1).toString().padStart(2, "0")}.
+                    </span>
                     <h3
                       className={`${styles.advantageTitle} ${styles.manropeTitle}`}
                     >
@@ -106,7 +151,7 @@ export default function Home() {
             </div>
           </Container>
         </section>
-        <section>
+        <section id="contact-us" className={styles.contactUsSection}>
           <Container>
             <div className={styles.contactUsContent}>
               <div className={styles.contactUsDescriptionContent}>
@@ -117,17 +162,18 @@ export default function Home() {
                 </h2>
                 <div className={styles.contactUsDescriptionContainer}>
                   <p className={styles.contactUsDescription}>
-                    По всем интересующим Вас вопросам, пожалуйста, заполните
-                    форму снизу.
+                    Заполните, пожалуйста, форму снизу для получаения
+                    консультации по любому вопросу, который Вас интересует.
                   </p>
                   <p className={styles.contactUsDescription}>
-                    Мы с радостью Вас проконсультируем.
+                    Мы с радостью Вам поможем.
                   </p>
                 </div>
                 <form className={styles.contactForm}>
                   <input
                     className={styles.contactFormInput}
                     placeholder="Имя"
+                    ref={contactInputRef}
                   ></input>
                   <input
                     className={styles.contactFormInput}
@@ -147,19 +193,67 @@ export default function Home() {
                 </form>
               </div>
               <div className={styles.contactUsImageContainer}>
+                <p className={styles.contactUsDescription}>
+                  По вопросам к уже оформленным заказам, пожалуйста, свяжитесь с
+                  нами по телефону или электронной почте.
+                </p>
                 <ul className={styles.contactUsList}>
                   <li className={styles.contactUsItem}>
-                    <h3 className={`${styles.manropeTitle} ${styles.contactUsItemTitle}`}>Обычные обращения</h3>
+                    <h3
+                      className={`${styles.manropeTitle} ${styles.contactUsItemTitle}`}
+                    >
+                      Обычные обращения
+                    </h3>
                     <div className={styles.contactUsItemDescription}>
-                      <span>+7 (495) 123-45-67</span>
-                      <span>info@example.com</span>
+                      <a
+                        className={styles.contactUsItemLink}
+                        href="tel:+74951234567"
+                      >
+                        +7 (495) 123-45-67
+                        <FontAwesomeIcon
+                          className={styles.linkIcon}
+                          icon={faArrowRight}
+                        ></FontAwesomeIcon>
+                      </a>
+                      <a
+                        className={styles.contactUsItemLink}
+                        href="mailto:info@example.com"
+                      >
+                        info@example.com
+                        <FontAwesomeIcon
+                          className={styles.linkIcon}
+                          icon={faArrowRight}
+                        ></FontAwesomeIcon>
+                      </a>
                     </div>
                   </li>
                   <li className={styles.contactUsItem}>
-                    <h3 className={`${styles.manropeTitle} ${styles.contactUsItemTitle}`}>Срочные обращения</h3>
+                    <h3
+                      className={`${styles.manropeTitle} ${styles.contactUsItemTitle}`}
+                    >
+                      Срочные обращения
+                    </h3>
                     <div className={styles.contactUsItemDescription}>
-                      <span>+7 (495) 123-45-67</span>
-                      <span>info@example.com</span>
+                      <a
+                        className={styles.contactUsItemLink}
+                        href="tel:+74951234567"
+                      >
+                        +7 (495) 123-45-67
+                        <FontAwesomeIcon
+                          className={styles.linkIcon}
+                          icon={faArrowRight}
+                        ></FontAwesomeIcon>
+                      </a>
+                      <a
+                        className={styles.contactUsItemLink}
+                        href="mailto:info@example.com"
+                      >
+                        info@example.com
+                        <FontAwesomeIcon
+                          className={styles.linkIcon}
+                          icon={faArrowRight}
+                        ></FontAwesomeIcon>
+                      </a>
                     </div>
                   </li>
                 </ul>
@@ -173,46 +267,6 @@ export default function Home() {
             </div>
           </Container>
         </section>
-        {/* <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div> */}
       </main>
       <footer className={styles.footer}>
         <Container>
@@ -224,49 +278,6 @@ export default function Home() {
             </div>
           </div>
         </Container>
-
-        {/* <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a> */}
       </footer>
     </div>
   );

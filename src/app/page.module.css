@@ -123,7 +123,7 @@ a.secondary {
 
 .manropeTitle {
   font-family: var(--font-manrope);
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .heroContent {
@@ -144,7 +144,7 @@ a.secondary {
   line-height: 1.5;
 }
 
-.heroButton {
+/* .heroButton {
   padding: 12px 12px;
     background-color: black;
     border: none;
@@ -159,8 +159,7 @@ a.secondary {
   background-color: transparent;
   border-color: #261c16;
   color: #261c16;
-  /* color: black; */
-}
+} */
 
 .whoWeAreContent {
   /* display: flex;
@@ -211,6 +210,11 @@ a.secondary {
   margin-bottom: 0;
 }
 
+.advantageIndex {
+  font-size: 24px;
+  font-weight: 300;
+}
+
 .advantageTitle {
   font-size: 16px;
   line-height: 1.2;
@@ -254,6 +258,13 @@ a.secondary {
   /* min-height: 61px; */
 }
 
+.contactUsSection {
+  min-height: 80svh;
+  display: flex;
+  align-items: center;
+  /* scroll-margin-top: 100px; */
+}
+
 .contactUsContent {
   display: grid;
   grid-template-columns: 420px 1fr;
@@ -285,13 +296,18 @@ a.secondary {
   gap: 12px;
 }
 
+/* .contactForm:focus-within {
+  background-color: red;
+} */
+
 .contactFormInput, .contactFormTextarea {
   padding: 10px 10px;
   border-radius: 0;
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
   outline: none;
+  transition: border-color 0.3s ease-in-out;
 }
 
 .contactFormTextarea {
@@ -322,7 +338,12 @@ a.secondary {
 .contactUsImageContainer {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
+  justify-content: flex-end;
+  background-color: #f1f1f1;
+  border-radius: 12px;
+  /* height: fit-content; */
+  padding: 24px;
 }
 
 .contactUsList {
@@ -341,7 +362,20 @@ a.secondary {
 .contactUsItemDescription {
   display: grid;
   gap: 4px;
-  font-size: 14px;
+  font-size: 16px;
+}
+
+.contactUsItemLink {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #666666;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.linkIcon {
+  rotate: -45deg;
 }
 
 .contactUsImage {
@@ -405,12 +439,21 @@ a.secondary {
   .advantagesList {
     gap: 24px;
   }
+
+  .contactUsContent {
+    grid-template-columns: 360px 1fr;
+    gap: 48px;
+  }
 }
 
 @media screen and (max-width: 1023px) {
   .contactUsContent {
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: 1fr;
     gap: 24px;
+  }
+
+  .contactUsDescriptionContent {
+    max-width: 480px;
   }
 
   .contactUsImage {
@@ -481,8 +524,12 @@ a.secondary {
     gap: 24px;
   }
 
-  .contactUsDescription {
+  /* .contactUsDescription {
     font-size: 14px;
+  } */
+
+  .contactFormInput:first-of-type {
+    scroll-margin-top: 250px;
   }
 
   .contactUsList {

@@ -1,0 +1,16 @@
+.heroButton {
+    padding: 12px 12px;
+    background-color: black;
+    border: none;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    color: white;
+}
+
+.heroButton:hover {
+    background-color: transparent;
+    border-color: #261c16;
+    color: #261c16;
+}
